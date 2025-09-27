@@ -10,7 +10,6 @@ import DataVisualizationCert from "../assets/Certificates/Tata_vis.png";
 import AWSCloudCert from "../assets/Certificates/AWS.png";
 import AIMLCert from "../assets/Certificates/AIML.png";
 import OracleCertificate from "../assets/Certificates/oracle.png";
-import { title } from "process";
 
 const CertificateCarousel = () => {
   const certificates = [
