@@ -44,7 +44,7 @@ const ContactSection: React.FC = () => {
     };
 
     try {
-      const res = await fetch("https://gokul-portfolio-1.onrender.com/send-email", {
+      const res = await fetch("https://gokul-portfolio-backend.onrender.com/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
