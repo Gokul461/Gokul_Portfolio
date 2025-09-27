@@ -9,12 +9,15 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:8080", // replace with your frontend URL in production
+  origin: [
+    "http://localhost:8080", // local dev
+    "https://gokulportfolio-r9exoq0dy-gokulnaths-projects-42b00bad.vercel.app" // Vercel frontend
+  ],
   methods: ["GET", "POST"],
   credentials: true
 }));
+
 
 // Set SendGrid API key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
