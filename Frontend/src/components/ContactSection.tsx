@@ -112,7 +112,7 @@ const ContactSection: React.FC = () => {
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-2 sm:px-4 md:px-6 relative z-10">
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"
@@ -127,7 +127,7 @@ const ContactSection: React.FC = () => {
           <div className="section-divider" />
           <div className="space-y-4">
             <p className="text-xl text-foreground font-medium">Let's Connect!</p>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+           <p className="text-lg text-muted-foreground max-w-full sm:max-w-xl mx-auto leading-relaxed">
               I'm always excited to discuss new projects, creative ideas, or opportunities to be
               part of your vision. Whether you have a question, need a quote, or just want to say hello,
               feel free to get in touch!
@@ -135,7 +135,7 @@ const ContactSection: React.FC = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-4 lg:gap-12 items-start">
           {/* Contact Info */}
           <motion.div
             className="space-y-8"
@@ -146,10 +146,10 @@ const ContactSection: React.FC = () => {
           >
             <div className="space-y-6">
               <div className="space-y-2">
-                <h3 className="text-2xl font-heading font-semibold text-foreground">
+                <h3 className="text-2xl sm:text-2xl font-heading sm:max-w-md sm:space-y-2 sm:px-0 font-semibold text-foreground">
                   Let's start a conversation
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground sm:text-base">
                   I'm here to help bring your ideas to life with cutting-edge technology and creative solutions.
                 </p>
               </div>
@@ -158,7 +158,7 @@ const ContactSection: React.FC = () => {
                 {contactMethods.map((method, index) => (
                   <motion.div
                     key={method.title + index}
-                     className="card-gradient rounded-2xl p-4 sm:p-6 group hover:scale-105 transition-all duration-300 cursor-pointer"
+                    className="card-gradient rounded-2xl p-4 sm:p-6 group hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden"
                     onClick={() => method.href && window.open(method.href)}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -218,12 +218,12 @@ const ContactSection: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="card-gradient rounded-2xl p-4 sm:p-6 pb-16">
-              <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">
+            <div className="card-gradient rounded-2xl p-4 sm:p-6 pb-16 overflow-hidden">
+              <h3 className="text-2xl mt-4 ms-6 font-heading font-semibold text-foreground mb-6">
                 Send a Message
               </h3>
 
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 p-7">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">Name</label>
