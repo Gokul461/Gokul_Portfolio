@@ -59,7 +59,9 @@ app.post("/send-email", (req, res) => {
         try {
           const response = await fetch(process.env.PIPEDREAM_WEBHOOK_URL, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json",
+             "Authorization": `Bearer ${process.env.PIPEDREAM_TOKEN}`,
+            },
             body: JSON.stringify({ name, email, subject, message }),
           });
           console.log("Telegram webhook status:", response.status);
