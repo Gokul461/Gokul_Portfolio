@@ -12,7 +12,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:8080", // local dev
-    "https://gokulportfolio-r9exoq0dy-gokulnaths-projects-42b00bad.vercel.app" // Vercel frontend
+    "https://gokulportfolio-ten.vercel.app"
   ],
   methods: ["GET", "POST"],
   credentials: true
