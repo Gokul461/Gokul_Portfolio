@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
     <>
       <section
         id="hero"
-        className="min-h-screen mt-6 flex flex-col lg:flex-row items-center justify-center relative overflow-hidden"
+        className="min-h-screen mt-8 flex flex-col lg:flex-row items-center justify-center relative overflow-hidden"
       >
         {/* Static Gradient Background */}
         <div className="absolute dark:from-background dark:via-muted/80 dark:to-background/90">
