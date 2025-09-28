@@ -223,7 +223,7 @@ const ContactSection: React.FC = () => {
                 Send a Message
               </h3>
 
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 p-7">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 px-7 pt-6 pb-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">Name</label>
