@@ -12,7 +12,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:8080", // Local development
+      "http://localhost:8080", // Local dev
       "https://gokulportfolio-ten.vercel.app", // Production frontend
     ],
     methods: ["GET", "POST"],
@@ -20,22 +20,24 @@ app.use(
   })
 );
 
-// ✅ FIX: Middleware to parse incoming JSON bodies
+// Middleware to parse JSON bodies
 app.use(express.json());
 
+// SendGrid setup
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 // Email validation
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
 /**
  * Contact form endpoint
- * URL: POST /send-email
+ * POST /send-email
  */
 app.post("/send-email", (req, res) => {
-  console.log("Incoming body:", req.body); // Debugging log
+  console.log("Incoming body:", req.body);
 
   const { name, email, subject, message } = req.body;
 
-  // Basic validation
   if (!name || !email || !message) {
     return res
       .status(400)
@@ -46,19 +48,26 @@ app.post("/send-email", (req, res) => {
     return res.status(400).json({ message: "Invalid email address!" });
   }
 
-  // ✅ Respond immediately to the client
+  // Respond immediately to frontend
   res.status(200).json({ message: "Your message has been received!" });
 
+  // Fire-and-forget async tasks
   (async () => {
     try {
-      // 1️⃣ Send Telegram notification via Pipedream (Optional)
+      // 1️⃣ Send Telegram notification via Pipedream
       if (process.env.PIPEDREAM_WEBHOOK_URL) {
-        await fetch(process.env.PIPEDREAM_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, subject, message }),
-        });
-        console.log("Notification sent to Telegram via Pipedream");
+        try {
+          const response = await fetch(process.env.PIPEDREAM_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, subject, message }),
+          });
+          console.log("Telegram webhook status:", response.status);
+          const text = await response.text();
+          console.log("Telegram webhook response:", text);
+        } catch (err) {
+          console.error("Telegram webhook failed:", err);
+        }
       }
 
       // 2️⃣ Send acknowledgment email via SendGrid
@@ -80,7 +89,7 @@ Gokulnath. S
         html: `
 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.7; max-width:600px; margin:auto; padding:20px;">
   <p style="font-size:16px;">Hi <strong>${name}</strong>,</p>
-  <p style="font-size:16px;">Thanks a lot for reaching out! 🎉 I’ve received your message:</p>
+  <p style="font-size:16px;">Thanks a lot for reaching out! I’ve received your message:</p>
   <blockquote style="padding:14px 16px; border-left:4px solid #0d6efd; margin:15px 0; font-style:italic; font-size:15px;">
     ${message}
   </blockquote>
@@ -100,7 +109,6 @@ Gokulnath. S
 });
 
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
 });
