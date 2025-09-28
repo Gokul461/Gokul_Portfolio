@@ -223,18 +223,26 @@ const ContactSection: React.FC = () => {
                 Send a Message
               </h3>
 
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="space-y-6 w-full max-w-2xl mx-auto"
+              >
+                {/* Name and Email */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Name Field */}
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">Name</label>
                     <Input
                       name="name"
                       placeholder="Your name"
                       required
-                      className="bg-background/50 border-border focus:border-primary transition-colors"
+                      className="bg-background/50 border-border focus:border-primary transition-colors text-base sm:text-sm lg:text-base p-3 sm:p-2"
                       disabled={loading}
                     />
                   </div>
+
+                  {/* Email Field */}
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">Email</label>
                     <Input
@@ -242,23 +250,25 @@ const ContactSection: React.FC = () => {
                       type="email"
                       placeholder="your@email.com"
                       required
-                      className="bg-background/50 border-border focus:border-primary transition-colors"
+                      className="bg-background/50 border-border focus:border-primary transition-colors text-base sm:text-sm lg:text-base p-3 sm:p-2"
                       disabled={loading}
                     />
                   </div>
                 </div>
 
+                {/* Subject Field */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-foreground">Subject</label>
                   <Input
                     name="subject"
                     placeholder="Project discussion, collaboration, etc."
                     required
-                    className="bg-background/50 border-border focus:border-primary transition-colors"
+                    className="bg-background/50 border-border focus:border-primary transition-colors text-base sm:text-sm lg:text-base p-3 sm:p-2"
                     disabled={loading}
                   />
                 </div>
 
+                {/* Message Field */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-foreground">Message</label>
                   <Textarea
@@ -266,39 +276,26 @@ const ContactSection: React.FC = () => {
                     placeholder="Tell me about your project, ideas, or how I can help..."
                     rows={6}
                     required
-                    className="bg-background/50 border-border focus:border-primary transition-colors resize-none"
+                    className="bg-background/50 border-border focus:border-primary transition-colors resize-none text-base sm:text-sm lg:text-base p-3 sm:p-2"
                     disabled={loading}
                   />
                 </div>
 
-                {/* Submit Button with spinner and loading message */}
+                {/* Submit Button */}
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full btn-hero bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white text-lg py-3 flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white text-lg sm:text-base lg:text-lg py-3 sm:py-2 rounded-xl"
                 >
                   {loading ? (
                     <span className="flex items-center gap-2 text-sm">
                       <span className="animate-spin rounded-full w-4 h-4 border-2 border-white border-t-transparent" />
                       {loadingMessage}
-                      <span className="dots">
-                        <span>.</span><span>.</span><span>.</span>
-                      </span>
                     </span>
                   ) : (
                     <span>Send Message</span>
                   )}
                 </Button>
-
-                {/* Tiny progress bar animation */}
-                {loading && (
-                  <motion.div
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: 2 }}
-                    className="h-1 bg-primary rounded mt-2"
-                  />
-                )}
               </form>
 
               <motion.p
