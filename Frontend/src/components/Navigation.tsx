@@ -94,9 +94,7 @@ const Navigation: React.FC = () => {
                 variant="outline"
                 className="btn-outline-glow border-fuchsia-600 hover:bg-fuchsia-600 text-black dark:text-white dark:hover:bg-fuchsia-600 transition-colors"
                 onClick={() =>
-                  window.open(
-                    'https://drive.google.com/file/d/1dJatPkr96EdAJj8wRIxja3DTqmto8AVQ/view?usp=sharing'
-                  )
+                  window.open('https://drive.google.com/file/d/1DWp17uQiLCf3zLBrzoN5fLAspRwEgwNp/view?usp=sharing')
                 }
               >
                 <Download className="w-4 h-4 mr-2" />
@@ -191,8 +189,7 @@ const Navigation: React.FC = () => {
                     variant="outline"
                     className="w-full flex items-center justify-center gap-2 border-fuchsia-600 hover:bg-fuchsia-600 text-black dark:text-white dark:hover:bg-fuchsia-600 transition-colors"
                     onClick={() => {
-                      window.open("/resume.pdf", "_blank");
-                      setIsMobileMenuOpen(false);
+                        window.open('https://drive.google.com/file/d/1DWp17uQiLCf3zLBrzoN5fLAspRwEgwNp/view?usp=sharing')
                     }}
                   >
                     <Download className="w-4 h-4" />
