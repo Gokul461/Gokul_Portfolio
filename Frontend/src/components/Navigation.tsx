@@ -21,6 +21,7 @@ const Navigation: React.FC = () => {
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
+    { href: '#contact', label: 'Contact' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -142,7 +143,9 @@ const Navigation: React.FC = () => {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             >
               <div className="space-y-6">
-                {navItems.map((item, index) => (
+                {navItems.filter((item, index) => (
+                  item.href !== '#contact'
+                )).map((item, index) => (
                   <motion.button
                     key={item.href}
                     className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium text-lg"
@@ -153,6 +156,7 @@ const Navigation: React.FC = () => {
                   >
                     {item.label}
                   </motion.button>
+                  
                 ))}
 
                 <div className="pt-6 space-y-4 border-t border-border">

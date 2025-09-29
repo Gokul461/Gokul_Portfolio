@@ -193,7 +193,8 @@ const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li>⚡ Love to build projects.</li>
               <li>📚 Avid reader of tech blogs.</li>
-              <li>🎮 Plays Free Fire in free time.</li>
+              <li>🎮 Enjoys playing Free Fire in free time.</li>
+
               <li>🌱 Always learning new tech.</li>
             </ul>
           </motion.div>
