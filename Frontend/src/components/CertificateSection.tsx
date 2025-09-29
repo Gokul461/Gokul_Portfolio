@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 // Certificate images
 import PythonCert from "../assets/Certificates/Python.png";
-import MongoDBCert from "../assets/Certificates/MongoDB.png";
+import MongoDBCert from "../assets/Certificates/Mongodb.png";
 import DataAnalysisCert from "../assets/Certificates/accenture_analytics.png";
 import DataVisualizationCert from "../assets/Certificates/Tata_vis.png";
 import AWSCloudCert from "../assets/Certificates/AWS.png";
